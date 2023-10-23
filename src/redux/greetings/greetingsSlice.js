@@ -1,18 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const url = "http://localhost:3000/greetings";
+const url = 'http://localhost:3000/greetings';
 
 export const fetchGreetings = createAsyncThunk(
-  "messages/fetchGreetings",
+  'messages/fetchGreetings',
   async (thunkAPI) => {
     try {
       const resp = await axios.get(url);
       return resp.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue("something went wrong");
+      return thunkAPI.rejectWithValue('something went wrong');
     }
-  }
+  },
 );
 
 const initialState = {
@@ -23,7 +23,7 @@ const initialState = {
 };
 
 const messagesSlice = createSlice({
-  name: "messageList",
+  name: 'messageList',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
